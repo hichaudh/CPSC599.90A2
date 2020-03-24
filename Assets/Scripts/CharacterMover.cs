@@ -73,6 +73,7 @@ public class CharacterMover : MonoBehaviour
 
         if (Destinations[CurrentDestinationIndex].gameObject == other.gameObject)
         {
+            Debug.Log("if entered");
             // There are probably cleaner and less coupled ways of doing this
             var DoorTarget = other.gameObject.GetComponent<DoorTarget>();
             if (DoorTarget != null)
@@ -88,17 +89,19 @@ public class CharacterMover : MonoBehaviour
                 if (OnFinalDestinationReached != null)
                 {
                     OnFinalDestinationReached.Invoke();
-                    if (ZombieAttack.touching == true) {
-                        var target = Destinations[1];
-                        MyTransform.position = Vector3.MoveTowards(MyTransform.position, target.position, step);
-                        MyTransform.LookAt(pointOnPlane, MyTransform.up);
-                        TurnMoveToDestinationsOn();
-                        TurnScaredOn();
-                    }
                 }
 
                 MyTransform.localPosition = Vector3.zero;
             }
+        }
+        if (ZombieAttack.touching == true)
+        {
+            var target = Destinations[1];
+            MyTransform.position = Vector3.MoveTowards(MyTransform.position, target.position, step);
+            MyTransform.LookAt(pointOnPlane, MyTransform.up);
+            Debug.Log("zombie collided");
+            TurnMoveToDestinationsOn();
+            TurnScaredOn();
         }
     }
 
