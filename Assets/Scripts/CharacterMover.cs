@@ -89,9 +89,11 @@ public class CharacterMover : MonoBehaviour
                 {
                     OnFinalDestinationReached.Invoke();
                     if (ZombieAttack.touching == true) {
-                        var target = Destinations[0];
+                        var target = Destinations[1];
                         MyTransform.position = Vector3.MoveTowards(MyTransform.position, target.position, step);
                         MyTransform.LookAt(pointOnPlane, MyTransform.up);
+                        TurnMoveToDestinationsOn();
+                        TurnScaredOn();
                     }
                 }
 
