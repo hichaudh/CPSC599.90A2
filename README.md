@@ -1,4 +1,4 @@
-# 599-Sample-A1
+# 599-A2-(using sample A1)
 
 * Open scene A1 in the Scenes folder.
 * Set Vuforia camera settings through the ARCamera to select the camera you would like to use.
